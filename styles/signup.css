@@ -82,7 +82,8 @@ body{
 
 .center h1{
     text-align: center;
-    padding: 20px 0;
+    padding: 10px 0;
+    font-size: 1.5rem;
     border-bottom: 1px solid silver;
 }
 
@@ -188,10 +189,14 @@ input[type="submit"]:hover{
     text-decoration: underline;
 }
 
-/* #retype_pass{
-    margin-bottom: 14px;
-} */
-
+.login-form form .error-txt{
+    color: #721c24;
+    background: #f8d7da;
+    padding: 8px 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 15px auto;
+}
 .sel_field{
     margin-bottom: 20px;
 }
