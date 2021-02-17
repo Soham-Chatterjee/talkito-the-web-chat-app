@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    height: 100vh;
+    overflow: hidden;
+}
+
+.wrapper{
+    display: flex;
+}
+
+.wrapper img{
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.left-panel{
+    display: flex;
+    flex-direction: column;
+    width: 30.4%;
+    height: 100vh;
+    border-right: 0.8px solid #4c5352;
+}
+
+.left-panel .left-top{
+    height: 9.2%;
+    background-color: #2f3232;
+    border-bottom: 1px solid #4c5352;
+}
+
+.left-panel .left-search{
+    height: 6%;
+    background-color: #3e4343;
+    border-bottom: 1px solid #4c5352;
+}
+
+.search-obj{
+    margin: 4px 20px;
+    
+}
+
+.search-obj input{
+    background-color: #2f3231;
+    color: #ffffff;
+    outline: none;
+    padding-left: 20px;
+    height: 30px;
+    border: 1px solid #2f3231;
+    width: 320px;
+    border-radius: 20px;
+}
+.search-obj button{
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #2f3030;
+    background-color: #2e3030;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.left-panel .left-chats{
+    height: 84.8%;
+    background-color: #3e4343;
+}
+
+.right-panel{
+    width: 69.6%;
+    height: 100vh;
+}
+
+.right-panel .right-top{
+    height: 9.2%;
+    background-color: #2f3232;
+    border-bottom: 0.1px solid #4c5352;
+}
+
+.right-chat{
+    height: 92%;
+    background-color: #262a33;
+}
+
+.left-panel .content{
+    display: flex;
+    align-items: center;
+    margin: 6px 16px;
+}
+
+.left-panel .content .user-options{
+    display: flex;
+    padding-left: 120px;
+    color: #97918a;
+}
+
+.left-panel .content .user-options button{
+    background-color: #2f3232;
+    border: none;
+    color: #97918a;
+}
+
+.left-panel .content .user-options i{
+    padding-right: 28px;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.prof-img{
+    margin-right: 140px;
+}
+
+.prof-img img{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
