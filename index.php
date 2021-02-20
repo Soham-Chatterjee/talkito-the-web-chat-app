@@ -28,9 +28,10 @@
                         <label>Username</label>
                     </div>
                     <div class="txt_field">
-                        <input name="password" type="password" required>
+                        <input name="password" type="password" id="login-pass" required>
                         <span></span>
                         <label>Password</label>
+                        <i class="fas fa-eye" onclick="toggle('login-pass', 'pass-eye')" id='pass-eye'></i>
                     </div>
                     <div class="pass">Forgot password?</div>
                     <input type="submit" value="Login">
@@ -41,6 +42,7 @@
             </div>
         </div>
     </div>
+    <script src="scripts/pass-toggle.js"></script>
 </body>
 
 </html>

@@ -34,6 +34,7 @@ body{
     height: 9.2%;
     background-color: #2f3232;
     border-bottom: 1px solid #4c5352;
+    position: sticky;
 }
 
 .left-panel .left-search{
@@ -43,24 +44,30 @@ body{
 }
 
 .search-obj{
-    margin: 4px 20px;
-    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    height: auto;
+    margin: 1% 8%;
 }
 
-.search-obj input{
+.left-panel .left-search .search-obj input{
     background-color: #2f3231;
     color: #ffffff;
     outline: none;
     padding-left: 20px;
-    height: 30px;
+    height: 40px;
     border: 1px solid #2f3231;
-    width: 320px;
+    width: 90%;
     border-radius: 20px;
 }
-.search-obj button{
+
+
+.left-panel .left-search button{
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border: 1px solid #2f3030;
     background-color: #2e3030;
     color: #ffffff;
@@ -186,14 +193,18 @@ body{
 }
 
 .right-panel .right-typing{
+    display: flex;
+    align-items: center;
     height: 10.6%;
     background: #2f3232;
 }
 
 .right-panel .right-typing .typing-area{
-    padding: 10px 50px;
+    width: 100%;
+    margin: 0 50px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .typing-area input{
@@ -215,29 +226,28 @@ body{
 .left-panel .content{
     display: flex;
     align-items: center;
-    margin: 6px 16px;
+    justify-content: space-between;
+    width: calc(100%-5%);
+    margin: 3% 5%;
 }
 
 .left-panel .content .user-options{
     display: flex;
-    padding-left: 120px;
+    align-items: center;
+    justify-content: space-between;
     color: #97918a;
 }
 
 .left-panel .content .user-options button{
+    padding-right: 35px;
     background-color: #2f3232;
     border: none;
     color: #97918a;
 }
 
 .left-panel .content .user-options i{
-    padding-right: 28px;
     font-size: 1.3rem;
     cursor: pointer;
-}
-
-.prof-img{
-    margin-right: 140px;
 }
 
 .prof-img img{
