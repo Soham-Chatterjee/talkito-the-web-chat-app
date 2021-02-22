@@ -10,7 +10,7 @@
     <title>Talkito!</title>
 </head>
 
-<body>
+<body id="main_body">
     <div class="wrapper">
         <div class="left-panel">
             <div class="left-top">
@@ -18,9 +18,9 @@
                     <div class="prof-img"><img src="images/user-images/prof_avatar.png" alt="profile-pic"
                             onclick="prof_change()"></div>
                     <div class="user-options">
-                        <button><i class="fas fa-comment-alt"></i></button>
-                        <button><i class="fas fa-ellipsis-v"></i></button>
+                        <button onclick="settings_open()"><i class="fas fa-ellipsis-v"></i></button>
                     </div>
+                    
                 </div>
             </div>
             <div class="left-search">
@@ -129,15 +129,31 @@
                 <p>Select an user to start chat</p>
             </div>
         </div>
+        <div class="settings" id='settings-pan'>
+            <div class="settings-pan-top">
+                <button onclick="settings_back()" style="background: none; outline: none; border: none; cursor: pointer;"><i class="fas fa-arrow-left"></i></button>
+                <p>Settings</p>
+            </div>
+            <div class="settings-pan-content">
+                <button onclick="prof_change()">Profile</button>
+                <button id='themebtn' onclick="toggle_theme()">Theme: Dark</button>
+                <button>Log Out</button>
+            </div>
+        </div>
         <div class="prof-change" id='prof-pan'>
             <div class="prof-pan-top">
-                <a href="#" onclick="prof_back()"><i class="fas fa-arrow-left"></i></a>
+                <button onclick="prof_back()" style="background: none; outline: none; border: none; cursor: pointer;"><i class="fas fa-arrow-left"></i></button>
+                <p>Edit Profile</p>
             </div>
             <div class="prof-details">
-                <img src="images/user-images/prof_avatar.png">
+                <img src="images/user-images/prof_avatar.png" class="profile" id="prof-pic">
+                <div class="hover-text" id= 'hover-text'>
+                    <i class="fas fa-camera"></i>
+                    <p class="text">CHANGE PROFILE PHOTO</p>
+                </div>
                 <div class="input-details">
-                    <input type="text" value="Username">
-                    <i class="fas fa-pen"></i>
+                    <input type="text" value="Username" id='name-input' maxlength="25" autocomplete="off">
+                    <button><i class="fas fa-check" id="save-name"></i></button>
                 </div>
             </div>
         </div>
@@ -151,6 +167,9 @@
                 </div>
             </div>
             <div class="right-chat">
+                <div class="chat-warn">
+                    <div class="warn-text"><p>Chat messages get refreshed after every 7 days to protect your privacy.</p></div>
+                </div>
                 <div class="chat outgoing">
                     <div class="details">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>

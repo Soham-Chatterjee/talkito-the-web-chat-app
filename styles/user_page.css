@@ -8,10 +8,37 @@
     font-family: "Poppins", sans-serif;
 }
 
+li{
+    text-decoration: none;
+}
+
 body{
     height: 100vh;
     overflow: hidden;
     background-color: #262a33;
+}
+
+.light{
+    filter: invert(1) hue-rotate(180deg);
+}
+
+.chat-warn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.warn-text{
+    padding: 1% 5%;
+    background-color: blanchedalmond;
+    color: #000; 
+    border-radius: 50px;
+}
+.context-menu{
+    background-color: #fff;
+    max-height: 5%;
+    position: relative;
+    top: 50%;
 }
 
 .wrapper{
@@ -134,11 +161,69 @@ body{
     align-items: center;
     justify-content: flex-start;
 }
+.settings{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #97918a;
+    background-color: #262a33;
+    height: 100vh;
+    width: 69.6%;
+    position: absolute;
+    transition: all 0.3s ease;
+    left: 100%;
+    border-right: 1px solid #4c5353;
+}
+
+.settings .settings-pan-top{
+    height: 9.2%;
+    width: 100%;
+    margin: auto 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.settings .settings-pan-top i{
+    font-size: 20px;
+    text-decoration: none;
+    color: #97918a;
+    margin-right: 5%;
+}
+
+.settings .settings-pan-top p{
+    margin-left: 5%;
+    font-size: 1.5rem;
+}
+
+.settings .settings-pan-content{
+    display: flex;
+    width: 50%;
+    margin: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90.8%;
+}
+
+.settings .settings-pan-content button{
+    margin: 3% 5%;
+    height: 8%;
+    width: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
 
 .prof-change .prof-pan-top i{
     font-size: 20px;
     text-decoration: none;
     color: #97918a;
+    margin-right: 5%;
+}
+
+.prof-change .prof-pan-top p{
+    margin-left: 5%;
+    font-size: 1.5rem;
 }
 
 .prof-change .prof-details{
@@ -151,15 +236,85 @@ body{
     height: 90.8%;
 }
 
-.input-details{
-    display: flex;
-    width: 20%;
-    align-items: center;
-    justify-content: space-evenly;
+.profile{
+    backface-visibility: hidden;
+    transition: 0.3s all ease;
 }
 
+.hover-text{
+    transition: all .3s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    -ms-transform: translate(-50%, -100%);
+    text-align: center;
+}
+
+.prof-change .prof-details .hover-text i{
+    font-size: 22px;
+    color: #fff;
+}
+
+.profile:hover{
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+.profile:hover ~ .hover-text{
+    opacity: 1;
+    cursor: pointer;
+}
+
+.hover-text:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+.hovered{
+    opacity: 0.3;
+}
+
+.hover-text:hover .profile{
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+.hover-text p{
+    color: #fff;
+}
+
+.input-details{
+    display: flex;
+    height: 5%;
+    align-items: center;
+    justify-content: space-evenly;
+    border-bottom: 1px solid #97918a;
+    transition: all 0.3 ease;
+}
+
+
 .input-details input{
-    height: 150%;
+    font-size: 1rem;
+    background-color: #262a33;
+    color: #97918a;
+    border: none;
+}
+
+.input-details button{
+    border: none;
+    background-color: #262a33;
+}
+
+#save-name{
+    color: #97918a;
+    transition: all 0.3s ease;
+}
+
+
+.focused{
+    cursor: pointer;
 }
 
 .right-panel .right-top{
