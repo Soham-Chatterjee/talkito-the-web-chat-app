@@ -11,6 +11,7 @@
 body{
     height: 100vh;
     overflow: hidden;
+    background-color: #262a33;
 }
 
 .wrapper{
@@ -92,6 +93,73 @@ body{
 .right-panel{
     width: 69.6%;
     height: 100vh;
+    position: relative;
+    top: 0;
+    display: none;
+}
+
+.default-panel{
+    height: 100vh;
+    width: 69.6%;
+    background-color: #262a33;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.default-panel .def-text p{
+    font-size: 2rem;
+    color: #97918a;
+}
+
+.prof-change{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #97918a;
+    background-color: #262a33;
+    height: 100vh;
+    width: 69.6%;
+    position: absolute;
+    transition: all 0.3s ease;
+    left: 100%;
+    border-right: 1px solid #4c5353;
+}
+
+.prof-change .prof-pan-top{
+    height: 9.2%;
+    width: 100%;
+    margin: auto 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.prof-change .prof-pan-top i{
+    font-size: 20px;
+    text-decoration: none;
+    color: #97918a;
+}
+
+.prof-change .prof-details{
+    display: flex;
+    width: 40%;
+    margin: auto;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 90.8%;
+}
+
+.input-details{
+    display: flex;
+    width: 20%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.input-details input{
+    height: 150%;
 }
 
 .right-panel .right-top{
@@ -302,3 +370,4 @@ body{
 .users-list a .status-dot .offline{
     color: #97918a;
 }
+

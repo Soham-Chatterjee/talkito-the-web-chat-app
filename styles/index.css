@@ -23,7 +23,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 100vh;
     width: 50%;
 }
@@ -49,6 +49,7 @@ body{
 }
 
 .center{
+    margin: auto 6.5%;
     animation: fadeIn 3s;
 }
 

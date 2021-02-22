@@ -19,53 +19,45 @@
             <span class="text"><br>Talkito! is completely free and open source with full transparency in its code. New improvements are always welcome!</span>
         </div>
         <div class="signup-form">
-            <section class="center">
+            <section class="center signup">
                 <h1>Sign Up</h1>
                 <form method="post">
-                    <div class="error-txt">This is an error msg</div>
+                    <div class="error-txt"></div>
                     <div class="txt_field">
-                        <input name="username" type="text" required>
+                        <input autocomplete="off" name="full_name" type="text" required>
                         <span></span>
                         <label>Full Name</label>
                     </div>
                     <div class="txt_field">
-                        <input name="email" type="email" required>
+                        <input autocomplete="off" name="email" type="email" required>
                         <span></span>
                         <label>E-mail</label>
                     </div>
                     <div class="txt_field">
-                        <input name="password" type="password"  id='pass' required>
+                        <input autocomplete="off" name="pass" type="password" id='pass' required>
                         <span></span>
                         <label>Password</label>
                         <i class="fas fa-eye" onclick="toggle('pass', 'pass-eye')" id='pass-eye'></i>
                     </div>
                     <div class="txt_field" id="retype_pass">
-                        <input name="password" id='retype-pass' type="password" required>
+                        <input autocomplete="off" name="retype_pass" id='retype-pass' type="password" required>
                         <span></span>
                         <label>Retype Password</label>
                         <i class="fas fa-eye" onclick="toggle('retype-pass', 'retype-eye')" id='retype-eye'></i>
                     </div>
-                    <div class="sel_field">
-                        <p>Gender</p>
-                        <div class="gender">
-                            <input type="radio" id="male" name="gender" value="male">
-                            <label for="male">Male</label><br>
-                            <input type="radio" id="female" name="gender" value="female">
-                            <label for="female">Female</label><br>
-                            <input type="radio" id="other" name="gender" value="other">
-                            <label for="other">Other</label>
-                        </div>
+                    <div class="button">
+                        <input type="submit" value="Sign Up" onclick="savedata()">
                     </div>
-                    <input type="submit" value="Sign Up">
                     <div class="login_link">
-                        Already a member? <a href="../templates/signup.html">Login</a>
+                        Already a member? <a href="index.php">Login</a>
                     </div>
                 </form>
-            </div>
         </div>
+    </div>
     </div>
 
     <script src="scripts/pass-toggle.js"></script>
+    <script src="scripts/signup.js"></script>
 </body>
 
 </html>

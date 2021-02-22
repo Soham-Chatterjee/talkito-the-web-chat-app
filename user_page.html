@@ -15,7 +15,8 @@
         <div class="left-panel">
             <div class="left-top">
                 <div class="content">
-                    <div class="prof-img"><img src="images/prof_avatar.png" alt="profile-pic"></div>
+                    <div class="prof-img"><img src="images/user-images/prof_avatar.png" alt="profile-pic"
+                            onclick="prof_change()"></div>
                     <div class="user-options">
                         <button><i class="fas fa-comment-alt"></i></button>
                         <button><i class="fas fa-ellipsis-v"></i></button>
@@ -30,9 +31,9 @@
             </div>
             <div class="left-chats">
                 <div class="users-list">
-                    <a href="#">
+                    <a href="#" onclick="chat_page()">
                         <div class="chat-content">
-                            <img src="images/prof_avatar.png" alt="">
+                            <img src="images/user-images/prof_avatar.png" alt="">
                             <div class="details">
                                 <span>Username</span>
                                 <p>This is test message</p>
@@ -42,7 +43,7 @@
                     </a>
                     <a href="#">
                         <div class="chat-content">
-                            <img src="images/prof_avatar.png" alt="">
+                            <img src="images/user-images/prof_avatar.png" alt="">
                             <div class="details">
                                 <span>Username</span>
                                 <p>This is test message</p>
@@ -52,7 +53,7 @@
                     </a>
                     <a href="#">
                         <div class="chat-content">
-                            <img src="images/prof_avatar.png" alt="">
+                            <img src="images/user-images/prof_avatar.png" alt="">
                             <div class="details">
                                 <span>Username</span>
                                 <p>This is test message</p>
@@ -62,7 +63,7 @@
                     </a>
                     <a href="#">
                         <div class="chat-content">
-                            <img src="images/prof_avatar.png" alt="">
+                            <img src="images/user-images/prof_avatar.png" alt="">
                             <div class="details">
                                 <span>Username</span>
                                 <p>This is test message</p>
@@ -72,7 +73,7 @@
                     </a>
                     <a href="#">
                         <div class="chat-content">
-                            <img src="images/prof_avatar.png" alt="">
+                            <img src="images/user-images/prof_avatar.png" alt="">
                             <div class="details">
                                 <span>Username</span>
                                 <p>This is test message</p>
@@ -82,7 +83,7 @@
                     </a>
                     <a href="#">
                         <div class="chat-content">
-                            <img src="images/prof_avatar.png" alt="">
+                            <img src="images/user-images/prof_avatar.png" alt="">
                             <div class="details">
                                 <span>Username</span>
                                 <p>This is test message</p>
@@ -92,7 +93,7 @@
                     </a>
                     <a href="#">
                         <div class="chat-content">
-                            <img src="images/prof_avatar.png" alt="">
+                            <img src="images/user-images/prof_avatar.png" alt="">
                             <div class="details">
                                 <span>Username</span>
                                 <p>This is test message</p>
@@ -102,7 +103,7 @@
                     </a>
                     <a href="#">
                         <div class="chat-content">
-                            <img src="images/prof_avatar.png" alt="">
+                            <img src="images/user-images/prof_avatar.png" alt="">
                             <div class="details">
                                 <span>Username</span>
                                 <p>This is test message</p>
@@ -112,7 +113,7 @@
                     </a>
                     <a href="#">
                         <div class="chat-content">
-                            <img src="images/prof_avatar.png" alt="">
+                            <img src="images/user-images/prof_avatar.png" alt="">
                             <div class="details">
                                 <span>Username</span>
                                 <p>This is test message</p>
@@ -123,10 +124,27 @@
                 </div>
             </div>
         </div>
-        <div class="right-panel">
+        <div class="default-panel" id="def-pan">
+            <div class="def-text">
+                <p>Select an user to start chat</p>
+            </div>
+        </div>
+        <div class="prof-change" id='prof-pan'>
+            <div class="prof-pan-top">
+                <a href="#" onclick="prof_back()"><i class="fas fa-arrow-left"></i></a>
+            </div>
+            <div class="prof-details">
+                <img src="images/user-images/prof_avatar.png">
+                <div class="input-details">
+                    <input type="text" value="Username">
+                    <i class="fas fa-pen"></i>
+                </div>
+            </div>
+        </div>
+        <div class="right-panel" id="chat-pan">
             <div class="right-top">
-                <a href="#" class="back-icon"><i class="fas fa-arrow-left"></i></a>
-                <img src="images/prof_avatar.png" alt="">
+                <a href="#" class="back-icon" onclick="chat_back()"><i class="fas fa-arrow-left"></i></a>
+                <img src="images/user-images/prof_avatar.png" alt="">
                 <div class="details">
                     <span>Username</span>
                     <p>online</p>
@@ -139,7 +157,7 @@
                     </div>
                 </div>
                 <div class="chat incoming">
-                    <img src="images/prof_avatar.png" alt="">
+                    <img src="images/user-images/prof_avatar.png" alt="">
                     <div class="details">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
@@ -150,7 +168,7 @@
                     </div>
                 </div>
                 <div class="chat incoming">
-                    <img src="images/prof_avatar.png" alt="">
+                    <img src="images/user-images/prof_avatar.png" alt="">
                     <div class="details">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
@@ -161,7 +179,7 @@
                     </div>
                 </div>
                 <div class="chat incoming">
-                    <img src="images/prof_avatar.png" alt="">
+                    <img src="images/user-images/prof_avatar.png" alt="">
                     <div class="details">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
@@ -172,7 +190,7 @@
                     </div>
                 </div>
                 <div class="chat incoming">
-                    <img src="images/prof_avatar.png" alt="">
+                    <img src="images/user-images/prof_avatar.png" alt="">
                     <div class="details">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
@@ -183,7 +201,7 @@
                     </div>
                 </div>
                 <div class="chat incoming">
-                    <img src="images/prof_avatar.png" alt="">
+                    <img src="images/user-images/prof_avatar.png" alt="">
                     <div class="details">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
@@ -194,7 +212,7 @@
                     </div>
                 </div>
                 <div class="chat incoming">
-                    <img src="images/prof_avatar.png" alt="">
+                    <img src="images/user-images/prof_avatar.png" alt="">
                     <div class="details">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
@@ -205,7 +223,7 @@
                     </div>
                 </div>
                 <div class="chat incoming">
-                    <img src="images/prof_avatar.png" alt="">
+                    <img src="images/user-images/prof_avatar.png" alt="">
                     <div class="details">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
@@ -216,7 +234,7 @@
                     </div>
                 </div>
                 <div class="chat incoming">
-                    <img src="images/prof_avatar.png" alt="">
+                    <img src="images/user-images/prof_avatar.png" alt="">
                     <div class="details">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
@@ -227,7 +245,7 @@
                     </div>
                 </div>
                 <div class="chat incoming">
-                    <img src="images/prof_avatar.png" alt="">
+                    <img src="images/user-images/prof_avatar.png" alt="">
                     <div class="details">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
@@ -241,6 +259,8 @@
             </div>
         </div>
     </div>
+
+    <script src="scripts/main_page.js"></script>
 </body>
 
 </html>

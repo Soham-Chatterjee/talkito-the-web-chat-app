@@ -23,7 +23,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 100vh;
     width: 50%;
 }
@@ -32,15 +32,15 @@ body{
     color: #ffffff;
     font-size: 3rem;
     font-weight: 600;
-    margin-left: 50px;
-    margin-bottom: 3px;
+    /* margin-left: 50px; */
+    /* margin-bottom: 3px; */
 }
 
 .text{
     color: #ffffff;
     font-size: 1.3rem;
     font-weight: 400;
-    margin-left: 50px;
+    /* margin-left: 50px; */
 }
 
 .signup-form{
@@ -207,25 +207,4 @@ input[type="submit"]:hover{
     border-radius: 5px;
     margin: 15px auto;
     display: none;
-}
-.sel_field{
-    margin-bottom: 20px;
-}
-
-.sel_field p{
-    color: #a6a6a6;
-}
-
-.sel_option{
-    font-size: 20px;
-}
-
-.gender{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-}
-
-.gender label{
-    color: #a6a6a6;
 }

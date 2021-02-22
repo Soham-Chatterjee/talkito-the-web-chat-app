@@ -18,31 +18,34 @@
                 Login to Talkito! now!</span>
         </div>
         <div class="login-form">
-            <div class="center">
+            <div class="center login">
                 <h1>Login</h1>
                 <form method="post">
-                    <div class="error-txt">This is an error msg</div>
+                    <div class="error-txt"></div>
                     <div class="txt_field">
-                        <input name="username" type="text" required>
+                        <input name="email" type="text" autocomplete="off" required>
                         <span></span>
-                        <label>Username</label>
+                        <label>Email</label>
                     </div>
                     <div class="txt_field">
-                        <input name="password" type="password" id="login-pass" required>
+                        <input name="pass" type="password" id="login-pass" autocomplete="off" required>
                         <span></span>
                         <label>Password</label>
                         <i class="fas fa-eye" onclick="toggle('login-pass', 'pass-eye')" id='pass-eye'></i>
                     </div>
                     <div class="pass">Forgot password?</div>
-                    <input type="submit" value="Login">
+                    <div class="button">
+                        <input type="submit" value="Login" onclick="savedata()">
+                    </div>
                     <div class="signup_link">
-                        Not a member till now? <a href="../templates/signup.html">Signup</a>
+                        Not a member till now? <a href="signup.php">Signup</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
     <script src="scripts/pass-toggle.js"></script>
+    <script src="scripts/login.js"></script>
 </body>
 
 </html>
