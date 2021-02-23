@@ -146,10 +146,16 @@
                 <p>Edit Profile</p>
             </div>
             <div class="prof-details">
-                <img src="images/user-images/prof_avatar.png" class="profile" id="prof-pic">
-                <div class="hover-text" id= 'hover-text'>
+                <img src="images/user-images/prof_avatar.png" class="profile" id="prof-pic" onclick="change_pic()">
+                <div class="img-options-div" id='img-options-div'>
+                    <input type="file" value="Change Profile Photo" id="file-input">
+                    <button class="img-options" onclick="document.getElementById('file-input').click()">Change Profile Photo</button>
+                    <button class="img-options">Remove Profile Photo</button>
+                </div>
+                <div class="error-txt">This is an error msg</div>
+                <div class="hover-text" id='hover-text' onclick="change_pic()">
                     <i class="fas fa-camera"></i>
-                    <p class="text">CHANGE PROFILE PHOTO</p>
+                    <p class="text" id='hov-txt'>CHANGE PROFILE PHOTO</p>
                 </div>
                 <div class="input-details">
                     <input type="text" value="Username" id='name-input' maxlength="25" autocomplete="off">
