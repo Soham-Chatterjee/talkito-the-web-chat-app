@@ -1,4 +1,4 @@
-let def_panel = document.getElementById("def-pan");
+let chat_panel = document.getElementById("chat-pan");
 let prof_panel = document.getElementById("prof-pan");
 var pic = document.getElementById('prof-pic');
 var hov_txt_div = document.getElementById('hover-text');
@@ -22,7 +22,8 @@ hov_txt_div.addEventListener('mouseout', function() {
 }, false);
 
 function chat_page(){
-    def_panel.style.display = 'none';
+    chat_panel.style.display = 'block';
+    chat_panel.style.left = '0%';
     prof_panel.style.left = '100%';
     settings_panel.style.left = '100%';
     img_opt_div.style.display = 'none';
@@ -32,7 +33,8 @@ function chat_page(){
 }
 
 function chat_back(){
-    def_panel.style.display = 'flex';
+    chat_panel.style.display = 'none';
+    chat_panel.style.left = '100%';
     prof_panel.style.left = '100%';
     settings_panel.style.left = '100%';
     img_opt_div.style.display = 'none';
@@ -43,7 +45,7 @@ function chat_back(){
 function prof_change(){
     prof_panel.style.display = 'flex';
     prof_panel.style.left = '30.4%';
-    def_panel.style.display = 'none';
+    chat_panel.style.display = 'none';
     settings_panel.style.left = '100%';
     img_opt_div.style.display = 'none';
     main_hov_txt.innerHTML= "CHANGE PROFILE PHOTO";
@@ -51,7 +53,8 @@ function prof_change(){
 }
 
 function prof_back(){
-    def_panel.style.display = 'flex';
+    chat_panel.style.display = 'block';
+    // chat_panel.style.left = '100%';
     prof_panel.style.left = '100%';
     settings_panel.style.left = '100%';
     img_opt_div.style.display = 'none';
@@ -62,7 +65,7 @@ function prof_back(){
 function settings_open(){
     settings_panel.style.display = 'flex';
     settings_panel.style.left = '30.4%';
-    def_panel.style.display = 'none';
+    chat_panel.style.display = 'none';
     prof_panel.style.left = '100%';
     img_opt_div.style.display = 'none';
     main_hov_txt.innerHTML= "CHANGE PROFILE PHOTO";
@@ -70,7 +73,8 @@ function settings_open(){
 }
 
 function settings_back(){
-    def_panel.style.display = 'flex';
+    chat_panel.style.display = 'block';
+    // chat_panel.style.left = '100%';
     prof_panel.style.left = '100%';
     settings_panel.style.left = '100%';
     img_opt_div.style.display = 'none';

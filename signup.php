@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if ((isset($_SESSION['unique_id']))) {
+        header('location: user_page.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +18,7 @@
 
 <body>
     <div class="wrapper">
-        <div class="desc">
+        <div class="desc" style="margin: auto 10%;">
             <p class="head">Sign Up to Talkito! It only takes a few moments</p>
             <span class="text">Join the community where people get to know each other, in a completely safe and secure way!</span>
             <span class="text"><br>Talkito! does not save your chats, neither on the user end nor on the server end. Chat messages older than 7 days are automatically removed! So, you can freely talk to anyone without the fear of data breaches.</span>

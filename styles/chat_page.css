@@ -110,7 +110,7 @@ body{
 .search-obj{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: 80%;
     height: auto;
     margin: 1% 8%;
@@ -159,14 +159,17 @@ body{
     height: 100vh;
     position: relative;
     top: 0;
-    display: none;
+    display: block;
 }
+
+
+
 
 .default-panel{
     height: 100vh;
     width: 69.6%;
     background-color: #262a33;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
 }
@@ -482,13 +485,16 @@ body{
     border: none;
     border-radius: 50px;
     font-size: 15px;
+    outline: none;
+    color: #fff;
 }
 
 .typing-area button{
     border: none;
-    background: none;
+    background: #262a33;
     font-size: 20px;
-    /* color: #fff; */
+    color: #fff;
+    outline: none;
 }
 
 .left-panel .content{
@@ -525,7 +531,7 @@ body{
 }
 
 .users-list{
-    padding: auto 30px;
+    padding: auto 60px;
     
 }
 
@@ -538,7 +544,6 @@ body{
 }
 
 .users-list a .chat-content p{
-    margin-left: 0%;
     color: #97918a;
 }
 
@@ -574,5 +579,7 @@ body{
     font-size: 12px;
     color: #05c41f;
 }
-
+.users-list a .status-dot .offline{
+    color: #97918a;
+}
 
