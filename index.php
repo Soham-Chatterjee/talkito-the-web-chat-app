@@ -41,7 +41,6 @@
                         <label>Password</label>
                         <i class="fas fa-eye" onclick="toggle('login-pass', 'pass-eye')" id='pass-eye'></i>
                     </div>
-                    <div class="pass">Forgot password?</div>
                     <div class="button">
                         <input type="submit" value="Login" onclick="savedata()">
                     </div>
