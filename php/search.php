@@ -36,14 +36,8 @@
                 $you = "";
             }
 
-            if(empty($row['status'])){
-                $offline = "offline";
-            }
-            else{
-                $offline = "";
-            }
-
-            $output .=  '<a href="chat_page.php?user_id='.$row['unique_id'].'" id="user_chat">
+            if($row['status'] == "offline"){
+                $output .=  '<a href="chat_page.php?user_id='.$row['unique_id'].'" id="user_chat">
                             <div class="chat-content">
                                 <img src="images/user-images/'. $row['prof_pic'] .'" alt="">
                                 <div class="details">
@@ -51,8 +45,21 @@
                                     <p>'.$you.$msg.'</p>
                                 </div>
                             </div>
-                            <div class="status-dot '.$offline.'"><i class="fas fa-circle"></i></div>
+                            <div class="status-dot" style="color: #97918a"><i class="fas fa-circle"></i></div>
                         </a>';
+            }
+            else{
+                $output .=  '<a href="chat_page.php?user_id='.$row['unique_id'].'" id="user_chat">
+                            <div class="chat-content">
+                                <img src="images/user-images/'. $row['prof_pic'] .'" alt="">
+                                <div class="details">
+                                    <span>'. $row['full_name'] .'</span>
+                                    <p>'.$you.$msg.'</p>
+                                </div>
+                            </div>
+                            <div class="status-dot"><i class="fas fa-circle"></i></div>
+                        </a>';
+            }
         }
     }else{
         $output .= '<div class="search-msg">

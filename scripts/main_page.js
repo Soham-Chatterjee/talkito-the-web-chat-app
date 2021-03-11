@@ -12,6 +12,9 @@ let users_list = document.getElementById('userlist');
 let searchBar = document.getElementById('search-input');
 let no_user = document.getElementById('no-user');
 let user_chat = document.getElementById('user-chat');
+let img_form = document.getElementById('img-form');
+let error = document.querySelector('.error-txt');
+let name_form = document.getElementById('name-form');
 
 hov_txt_div.addEventListener('mouseover', function() {
   pic.classList.add('hovered');
@@ -38,6 +41,8 @@ function chat_back(){
     img_opt_div.style.display = 'none';
     main_hov_txt.innerHTML= "CHANGE PROFILE PHOTO";
     hov_txt_div.style.transform = "translate(-50%, -100%)";
+    error.innerHTML = "";
+    error.style.display = 'none';
 }
 
 function prof_change(){
@@ -48,6 +53,8 @@ function prof_change(){
     img_opt_div.style.display = 'none';
     main_hov_txt.innerHTML= "CHANGE PROFILE PHOTO";
     hov_txt_div.style.transform = "translate(-50%, -100%)";
+    error.innerHTML = "";
+    error.style.display = 'none';
 }
 
 function prof_back(){
@@ -57,6 +64,8 @@ function prof_back(){
     img_opt_div.style.display = 'none';
     main_hov_txt.innerHTML= "CHANGE PROFILE PHOTO";
     hov_txt_div.style.transform = "translate(-50%, -100%)";
+    error.innerHTML = "";
+    error.style.display = 'none';
 }
 
 function settings_open(){
@@ -67,6 +76,8 @@ function settings_open(){
     img_opt_div.style.display = 'none';
     main_hov_txt.innerHTML= "CHANGE PROFILE PHOTO";
     hov_txt_div.style.transform = "translate(-50%, -100%)";
+    error.innerHTML = "";
+    error.style.display = 'none';
 }
 
 function settings_back(){
@@ -76,24 +87,46 @@ function settings_back(){
     img_opt_div.style.display = 'none';
     main_hov_txt.innerHTML= "CHANGE PROFILE PHOTO";
     hov_txt_div.style.transform = "translate(-50%, -100%)";
+    error.innerHTML = "";
+    error.style.display = 'none';
 }
 
 function toggle_theme(){
-    if (themebtn.textContent === "Theme: Dark"){
+    if (main_body.classList.contains('light')){
+        main_body.classList.remove('light'); //#d1d5de
+        themebtn.textContent = 'Theme: Dark';
+        img_opt_div.style.display = 'none';
+        main_hov_txt.innerHTML= "CHANGE PROFILE PHOTO";
+        hov_txt_div.style.transform = "translate(-50%, -100%)";
+        document.documentElement.style.setProperty('--theme-primary', '#262a33');
+        document.documentElement.style.setProperty('--theme-secondary', '#2f3232');
+        document.documentElement.style.setProperty('--theme-tertiary', '#3e4343');
+        document.documentElement.style.setProperty('--theme-object-primary', '#fff');
+        document.documentElement.style.setProperty('--theme-object-secondary', '#97918a');
+        document.documentElement.style.setProperty('--theme-object-tertiary', '#000');
+        document.documentElement.style.setProperty('--theme-border', '#4c5352');
+        document.documentElement.style.setProperty('--theme-button-primary', '#343a4e');
+        document.documentElement.style.setProperty('--theme-button-hover', '#364e5b');
+        document.documentElement.style.setProperty('--theme-warning-div', '#ffebcd');
+        document.documentElement.style.setProperty('--theme-online', '#05c41f');
+    }
+    else{
         main_body.classList.add('light');
-        main_body.style.backgroundColor = '#d1d5de';
         themebtn.textContent = 'Theme: Light';
         img_opt_div.style.display = 'none';
         main_hov_txt.innerHTML= "CHANGE PROFILE PHOTO";
         hov_txt_div.style.transform = "translate(-50%, -100%)";
-    }
-    else{
-        main_body.classList.remove('light');
-        themebtn.textContent = 'Theme: Dark';
-        main_body.style.backgroundColor = '#262a33';
-        img_opt_div.style.display = 'none';
-        main_hov_txt.innerHTML= "CHANGE PROFILE PHOTO";
-        hov_txt_div.style.transform = "translate(-50%, -100%)";
+        document.documentElement.style.setProperty('--theme-primary', '#e5ddd5');
+        document.documentElement.style.setProperty('--theme-secondary', '#b2aba5');
+        document.documentElement.style.setProperty('--theme-tertiary', '#ededed');
+        document.documentElement.style.setProperty('--theme-object-primary', '#000');
+        document.documentElement.style.setProperty('--theme-object-secondary', '#6f6f6f');
+        document.documentElement.style.setProperty('--theme-object-tertiary', '#a3a3a3');
+        document.documentElement.style.setProperty('--theme-border', '#aaaaaa');
+        document.documentElement.style.setProperty('--theme-button-primary', '#7e7a75');
+        document.documentElement.style.setProperty('--theme-button-hover', '#a49f98');
+        document.documentElement.style.setProperty('--theme-warning-div', '#4b4845');
+        document.documentElement.style.setProperty('--theme-online', '#05c41f');
     }
 }
 
@@ -149,4 +182,97 @@ function search(){
     }
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send("searchTerm=" + searchTerm);
+}
+
+function upload(){
+
+    console.log('running');
+    let xhr = new XMLHttpRequest();
+    console.log('xhr variable created');
+    xhr.open("POST", "php/upload.php", true);
+    console.log("xhr opened");
+    xhr.onload = function(){
+        console.log('xhr loaded');
+        if(xhr.readyState === XMLHttpRequest.DONE){
+            console.log('xhr ready');
+            if(xhr.status === 200){
+                console.log('xhr status matched');
+                let data = xhr.response;
+                if(data == "Success"){
+                    error.innerHTML = "";
+                    error.style.display = "none";
+                    location.reload();
+                    // location.href("chat_page.php").reload();
+                }
+                else if(data == "Please upload an image file - jpeg, png, jpg"){
+                    error.innerHTML = data;
+                    error.style.display = 'block';
+                }
+                else{
+                    console.log(data);
+                }
+            }
+        }
+    }
+    let formdata = new FormData(img_form);
+    xhr.send(formdata);
+}
+
+function remove(){
+    console.log('running');
+    let xhr = new XMLHttpRequest();
+    console.log('xhr variable created');
+    xhr.open("GET", "php/remove.php", true);
+    console.log("xhr opened");
+    xhr.onload = function(){
+        console.log('xhr loaded');
+        if(xhr.readyState === XMLHttpRequest.DONE){
+            console.log('xhr ready');
+            if(xhr.status === 200){
+                console.log('xhr status matched');
+                let data = xhr.response;
+                if(data == "Success"){
+                    error.innerHTML = "";
+                    error.style.display = "none";
+                    location.reload();
+                    // location.href("chat_page.php").reload();
+                }
+                else{
+                    error.innerHTML = data;
+                    error.style.display = "block";
+                }
+            }
+        }
+    }
+    xhr.send(); 
+}
+
+function name_change(){
+    console.log('running');
+    let xhr = new XMLHttpRequest();
+    console.log('xhr variable created');
+    xhr.open("POST", "php/rename.php", true);
+    console.log("xhr opened");
+    xhr.onload = function(){
+        console.log('xhr loaded');
+        if(xhr.readyState === XMLHttpRequest.DONE){
+            console.log('xhr ready');
+            if(xhr.status === 200){
+                console.log('xhr status matched');
+                let data = xhr.response;
+                if(data == "Success"){
+                    error.innerHTML = "";
+                    error.style.display = "none";
+                    location.reload();
+                    // location.href("chat_page.php").reload();
+                }
+                else{
+                    error.innerHTML = data;
+                    error.style.display = 'block';
+                }
+            }
+        }
+    }
+    let formdata = new FormData(name_form);
+    xhr.send(formdata);
 }

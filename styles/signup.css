@@ -209,3 +209,24 @@ input[type="submit"]:hover{
     margin: 15px auto;
     display: none;
 }
+
+@media (max-width: 1280px){
+    .desc{
+        margin: auto 5%;
+        font-size: 0.8rem;
+    }
+
+    .center{
+        margin: 2.5% !important;
+    }
+}
+
+@media (max-width: 1476px){
+    .desc{
+        margin: auto 6%;
+    }
+
+    .center{
+        margin: auto 5%;
+    }
+}

@@ -1,7 +1,13 @@
 <?php
     session_start();
     include_once "config.php";
-    $outgoing_id = $_SESSION['unique_id'];
+    if (isset($_SESSION['unique_id'])){
+        $outgoing_id = $_SESSION['unique_id'];
+    }
+    else{
+        header('location: ../index.php');
+        die();
+    }
 
     $sql = mysqli_query($conn, "SELECT * FROM users WHERE NOT unique_id = {$outgoing_id}");
     
@@ -19,7 +25,7 @@
             $row2 = mysqli_fetch_assoc($query2);
 
             if (mysqli_num_rows($query2) > 0){
-                $result = base64_decode($row2['msg']);
+                $result = str_replace('\\','',base64_decode($row2['msg']));
             }
             else{
                 $result = 'is on Talkito!';

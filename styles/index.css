@@ -26,6 +26,7 @@ body{
     align-items: flex-start;
     height: 100vh;
     width: 50%;
+    margin: auto 10%;
 }
 
 .head{
@@ -205,4 +206,25 @@ input[type="submit"]:hover{
 
 .signup_link a:hover{
     text-decoration: underline;
+}
+
+@media (max-width: 1280px){
+    .desc{
+        margin: auto 5%;
+        font-size: 0.8rem;
+    }
+
+    .center{
+        left: 40%;
+    }
+}
+
+@media (max-width: 1476px){
+    .desc{
+        margin: auto 6%;
+    }
+
+    .center{
+        left: 45%;
+    }
 }

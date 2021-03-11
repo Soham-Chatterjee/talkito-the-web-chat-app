@@ -10,6 +10,7 @@
             $time = date('d/m/Y h:i A');
             $sql = mysqli_query($conn, "UPDATE users SET status = '{$status}', last_seen = '{$time}' WHERE unique_id = {$logout_id}");
             if ($sql){
+                echo $status;
                 session_unset();
                 session_destroy();
                 header('location: ../index.php');

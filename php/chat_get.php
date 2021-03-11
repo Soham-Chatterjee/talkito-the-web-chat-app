@@ -16,10 +16,11 @@
 
         if (mysqli_num_rows($query) > 0){
             while ($row = mysqli_fetch_assoc($query)){
+                $msg = str_replace('\\', '', base64_decode($row['msg']));
                 if ($row['outgoing_msg_id'] === $outgoing_id){
                     $output .= '<div class="chat outgoing">
                                     <div class="details">
-                                        <p title="'.base64_decode($row['msg']).'">'.base64_decode($row['msg']).'</p>
+                                        <p title="'.$msg.'">'.$msg.'</p>
                                     </div>
                                 </div>';
                 }
@@ -27,7 +28,7 @@
                     $output .= '<div class="chat incoming">
                                     <img src="images/user-images/'. $row['prof_pic'] .'" alt="" title="'.$row['full_name'].'">
                                     <div class="details">
-                                        <p title="'.base64_decode($row['msg']).'">'. base64_decode($row['msg']) .'</p>
+                                        <p title="'.$msg.'">'.$msg.'</p>
                                     </div>
                                 </div>';
                 }

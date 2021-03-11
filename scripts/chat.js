@@ -2,6 +2,7 @@ const form = document.querySelector('.typing-area');
 const sendBtn = document.getElementById('msg-send');
 const inputField = document.getElementById('msg-input');
 const chatBox = document.querySelector('.right-chat');
+const status = document.getElementById('status-txt');
 
 form.onsubmit = (e) => {
     e.preventDefault();
@@ -51,7 +52,6 @@ setInterval(()=>{
     let formdata = new FormData(form);
     xhr.send(formdata);
 }, 500);
-
 
 function scrollToBottom(){
     chatBox.scrollTop = chatBox.scrollHeight;

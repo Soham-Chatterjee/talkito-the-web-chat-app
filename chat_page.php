@@ -13,6 +13,7 @@
             $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$user_id}");
             if (mysqli_num_rows($sql) > 0) {
                 $row = mysqli_fetch_assoc($sql);
+                $status = $row['status'];
             }
             else{
                 header('location: user_page.php');
@@ -37,6 +38,10 @@
     <link rel="stylesheet" href="styles/chat_page.css?php echo time(); ?>"">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css"/>
+    <link rel="shortcut icon" href="images/Icons/favicon.ico" type="image/x-icon">
+    <script src="scripts/fgEmojiPicker.js"></script>
     <title>Chat - <?php echo $row['full_name'];?></title>
 </head>
 
@@ -47,7 +52,7 @@
                 <div class="content">
                     <div class="prof-img"><img src="images/user-images/<?php echo $row2['prof_pic'];?>" alt="profile-pic" onclick="prof_change()"></div>
                     <div class="user-options">
-                        <button onclick="settings_open()"><i class="fas fa-ellipsis-v"></i></button>
+                        <button onclick="settings_open()" style="border: none; outline: none;"><i class="fas fa-ellipsis-v"></i></button>
                     </div>
 
                 </div>
@@ -55,7 +60,6 @@
             <div class="left-search">
                 <div class="search-obj">
                     <input type="text" class='search-bar' placeholder="Search for an user" id='search-input' onkeyup='search()'>
-                    <button><i class="fas fa-search" onclick='toggleSearch()'></i></button>
                 </div>
             </div>
             <div class="left-chats">
@@ -70,9 +74,10 @@
                 <p>Settings</p>
             </div>
             <div class="settings-pan-content">
-                <button onclick="prof_change()">Profile</button>
-                <button id='themebtn' onclick="toggle_theme()">Theme: Dark</button>
-                <button>Log Out</button>
+                <button onclick="prof_change()" style="color:#fff;">Profile</button>
+                <button id='themebtn' style="color: #fff;" title="You have to login with your new password again!"><a href="chng_pass.php" style="text-decoration: none; color: #fff;">Change Password</button>
+                <button><a href="php/logout.php?logout_id=<?php echo $row2['unique_id'];?>" style="text-decoration: none; color: #fff;">Log Out</a></button>
+                <button><a href="del_acc.php" style="text-decoration: none; color: #fff;">Delete Account</a></button>
             </div>
         </div>
         <div class="prof-change" id='prof-pan'>
@@ -83,18 +88,22 @@
             <div class="prof-details" id="prof-details">
                 <img src="images/user-images/<?php echo $row2['prof_pic'];?>" class="profile" id="prof-pic" onclick="change_pic()" style='width:450px; height:450px; object-fit:cover;'>
                 <div class="img-options-div" id='img-options-div'>
-                    <input type="file" value="Change Profile Photo" id="file-input">
-                    <button class="img-options" onclick="document.getElementById('file-input').click()">Change Profile Photo</button>
-                    <button class="img-options">Remove Profile Photo</button>
+                    <form method="POST" enctype="multipart/form-data" action="php/upload.php" autocomplete="off" id="img-form" hidden>
+                        <input type="file" value="Change Profile Photo" name="prof-pic" id="file-input" onchange="upload()" accept="image/x-png,image/gif,image/jpeg,image/jpg">
+                    </form>
+                    <button class="img-options" onclick="document.getElementById('file-input').click()" style="text-decoration: none; color: #fff; outline:none;">Change Profile Photo</button>
+                    <button class="img-options" style="text-decoration: none; color: #fff; outline:none;" onclick="remove()">Remove Profile Photo</button>
                 </div>
-                <div class="error-txt">This is an error msg</div>
+                <div class="error-txt"></div>
                 <div class="hover-text" id='hover-text' onclick="change_pic()">
                     <i class="fas fa-camera"></i>
                     <p class="text" id='hov-txt'>CHANGE PROFILE PHOTO</p>
                 </div>
                 <div class="input-details">
-                    <input type="text" value='<?php echo $row2['full_name'];?>' id='name-input' maxlength="35" autocomplete="off">
-                    <button><i class="fas fa-check" id="save-name"></i></button>
+                    <form action="#" method="post" id="name-form">
+                        <input type="text" placeholder='<?php echo $row2['full_name'];?>' id='name-input' maxlength="35" autocomplete="off" name='name-change'>
+                    </form>
+                    <button onclick="name_change()"><i class="fas fa-check" id="save-name"></i></button>
                 </div>
             </div>
         </div>
@@ -102,9 +111,9 @@
             <div class="right-top">
                 <a href="user_page.php" class="back-icon" onclick="chat_back();scrollToBottom();"><i class="fas fa-arrow-left"></i></a>
                 <img src="images/user-images/<?php echo $row['prof_pic'];?>" alt="" title="<?php echo $row['full_name'];?>">
-                <div class="details">
+                <div class="details" id='user-det'>
                     <span><?php echo $row['full_name'];?></span>
-                    <p><?php
+                    <p id='status-txt'><?php
                             date_default_timezone_set('Asia/Kolkata');
                             if ($row['status'] === 'online'){
                                 echo $row['status'];
@@ -123,22 +132,53 @@
             <div class="right-chat">
             </div>
             <div class="right-typing">
-                <form action="#" class='typing-area'>
+                
+                <form action="#" class='typing-area' id='msg-form'>
                     <input type="text" name='outgoing_id' value="<?php echo $_SESSION['unique_id'];?>" hidden>
                     <input type="text" name='incoming_id' value="<?php echo $user_id;?>" hidden>
                     <input id='msg-input' name='message' type="text" placeholder="Type a message" autocomplete='off'>
-                    <button id= 'msg-send' onclick="send();scrollToBottom();"><i class="fas fa-paper-plane" style="cursor: pointer;"></i></button>
+                    <!-- <div class="emoji" id="emoji"><i class="fas fa-grin-beam" style="cursor: pointer; font-size: 1.5rem; color:#fff; margin: auto 8%;"></i></div> -->
+                    <button id="emo-button" style="background-color: #2f3232; border:none; outline:none; cursor:pointer;"><i class="fas fa-grin"></i></button>
+                    <button id= 'msg-send' onclick="send();scrollToBottom();" style="background-color: #2f3232;"><i class="fas fa-paper-plane" style="cursor: pointer;"></i></button>
                 </form>
             </div>
         </div>
     </div>
     <script type="text/javascript">
+        let msginp = document.getElementById('msg-input');
+
+        msginp.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            sendBtn.click();
+        }
+        });
+
         function refresh_name(){
             name_input = document.getElementById('name-input');
             console.log(name_input.value);
             name_input.setAttribute('value','<?php echo $row['full_name'];?>');
-            $('.input-details').load("user_page.php .input-details")
+            $('.input-details').load("chat_page.php .input-details");
         }
+
+
+        var emo = '';
+        new FgEmojiPicker({
+            trigger: ['#emo-button'],
+            position: ['top', 'left'],
+            dir: 'scripts/',
+            prefetch: true,
+            insertInto: document.getElementById('msg-input'),
+            emit(emoji) {
+                window.emo = emoji['emoji'];
+            }
+            
+        },
+        
+        document.querySelector("#msg-input").value += emo);
+
+        
+
     </script>
     <script src="scripts/chat_page.js"></script>
     <script src="scripts/chat.js"></script>

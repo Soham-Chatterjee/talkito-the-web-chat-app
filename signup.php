@@ -14,6 +14,7 @@
     <title>Talkito! - Register</title>
     <link rel="stylesheet" href="styles/signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link rel="shortcut icon" href="images/Icons/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -61,7 +62,6 @@
         </div>
     </div>
     </div>
-
     <script src="scripts/pass-toggle.js"></script>
     <script src="scripts/signup.js"></script>
 </body>
